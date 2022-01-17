@@ -7,7 +7,19 @@ Output: [5,4,3,2,1]
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        ListNode *prev=NULL,*curr,*nextnode;
+       
+        //recursive approach
+        if(!head)
+            return head;
+        if(!head->next)
+            return head;
+        ListNode* newhead=reverseList(head->next);
+        head->next->next=head;
+        head->next=NULL;
+        return newhead;
+        
+        //iterative aaproach
+        /*ListNode *prev=NULL,*curr,*nextnode;
         curr=head;
         while(curr){
             if(curr==head){
@@ -24,5 +36,6 @@ public:
             }
         }
         return prev;
+        */
     }
 };
